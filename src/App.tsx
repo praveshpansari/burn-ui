@@ -1,12 +1,16 @@
+import { Route, Router, Routes } from "solid-app-router";
 import type { Component } from "solid-js";
-import Navbar from "./shared/nav-bar";
-import styles from "./App.module.css";
+import Header from "./shared/header";
+import Login from "./pages/login";
 
 const App: Component = () => {
   return (
-    <header>
-      <Navbar />
-    </header>
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
   );
 };
 
