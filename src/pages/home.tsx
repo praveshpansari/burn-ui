@@ -1,6 +1,6 @@
 import { Component } from "solid-js";
 
-const App: Component = () => {
+const Home: Component = () => {
   return (
     <section class="bg-gray-50 dark:bg-primary-900">
       <div class="flex flex-col items-center justify-center px-6 mx-auto py-16">
@@ -10,4 +10,4 @@ const App: Component = () => {
   );
 };
 
-export default App;
+export default Home;

@@ -2,7 +2,7 @@ import { A } from "@solidjs/router";
 import { Component } from "solid-js";
 import flame from "../assets/flame.png";
 
-const App: Component = () => {
+const Header: Component = () => {
   let linkClass =
     "block py-2 pr-4 pl-3 text-primary-600 border-b border-primary-100 hover:bg-primary-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-primary-400 lg:dark:hover:text-white dark:hover:bg-primary-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-primary-700";
   return (
@@ -110,4 +110,4 @@ const App: Component = () => {
   );
 };
 
-export default App;
+export default Header;

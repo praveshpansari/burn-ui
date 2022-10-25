@@ -1,6 +1,7 @@
 import { Route, Router, Routes } from "@solidjs/router";
 import type { Component } from "solid-js";
 import Header from "./shared/header";
+import Footer from "./shared/footer";
 import Login from "./pages/login";
 import Register from "./pages/register";
 import Home from "./pages/home";
@@ -16,6 +17,7 @@ const App: Component = () => {
         <Route path="/" component={Home} />
         <Route path="*" component={_404} />
       </Routes>
+      <Footer />
     </Router>
   );
 };
