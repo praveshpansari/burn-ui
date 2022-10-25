@@ -1,4 +1,4 @@
-import { Route, Router, Routes } from "solid-app-router";
+import { Route, Router, Routes } from "@solidjs/router";
 import type { Component } from "solid-js";
 import Header from "./shared/header";
 import Login from "./pages/login";
