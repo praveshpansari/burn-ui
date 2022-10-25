@@ -7,7 +7,7 @@ const App: Component = () => {
         <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-lg xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div class="p-6 space-y-4 md:space-y-6 sm:p-8 text-primary-900">
             <h1 class="text-xl font-bold leading-tight tracking-tight text-primary-900 md:text-2xl dark:text-white">
-              Welcome back
+              Continue burning
             </h1>
             <form action="#" class="space-y-4 md:space-y-6 pb-2">
               <div class="flex space-x-4 items-center">
