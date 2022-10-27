@@ -152,8 +152,8 @@ const Register: Component = () => {
                     for="terms"
                     class="font-light text-primary-500 dark:text-primary-300"
                   >
-                    By signing up, you are creating a Flowbite account, and you
-                    agree to Flowbite’s{" "}
+                    By signing up, you are creating a Cashburn account, and you
+                    agree to Cashburn's{" "}
                     <a
                       class="font-medium text-primary-600 hover:underline dark:text-primary-500"
                       href="#"

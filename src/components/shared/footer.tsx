@@ -1,5 +1,5 @@
 import { Component } from "solid-js";
-import flame from "../assets/flame.png";
+import flame from "../../assets/flame.png";
 
 const Footer: Component = () => {
   return (
@@ -55,7 +55,7 @@ const Footer: Component = () => {
         <span class="text-sm text-primary-500 sm:text-center dark:text-primary-400">
           © 2021-2022{" "}
           <a href="#" class="hover:underline">
-            Flowbite™
+            Cashburn™
           </a>
           . All Rights Reserved.
         </span>

@@ -6,6 +6,16 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import Home from "./pages/home";
 import _404 from "./pages/404";
+import { createClient } from "@urql/core";
+import { getToken } from "../services/Auth.service";
+
+export const client = createClient({
+  url: "http://localhost:8080/graphql",
+  fetchOptions: () => {
+    const token = getToken();
+    return token ? { headers: { Authorization: `bearer ${token}` } } : {};
+  },
+});
 
 const App: Component = () => {
   return (

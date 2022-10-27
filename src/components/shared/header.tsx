@@ -1,6 +1,6 @@
 import { A } from "@solidjs/router";
 import { Component } from "solid-js";
-import flame from "../assets/flame.png";
+import flame from "../../assets/flame.png";
 
 const Header: Component = () => {
   let linkClass =

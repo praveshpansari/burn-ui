@@ -1,15 +1,37 @@
-import { Component } from "solid-js";
+import { createSignal } from "solid-js";
+import { handleLogin, me } from "../../services/Auth.service";
 
-const Login: Component = () => {
+export default function Login() {
+  const [loading, setLoading] = createSignal(false);
+  const [email, setEmail] = createSignal("");
+  const [password, setPassword] = createSignal("");
+  const [error, setError] = createSignal(null);
+
+  const login = async (e: SubmitEvent) => {
+    e.preventDefault();
+    try {
+      setLoading(true);
+      await handleLogin({ email: email(), password: password() });
+      console.log(await me());
+    } catch (error: any) {
+      setError(error.message);
+      console.log(error);
+    }
+    setLoading(false);
+  };
+
   return (
     <section class="bg-gray-50 dark:bg-primary-900">
       <div class="flex flex-col items-center justify-center px-6 mx-auto py-16">
         <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-lg xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div class="p-6 space-y-4 md:space-y-6 sm:p-8 text-primary-900">
+            <span class="text-red-500 font-medium text-sm float-left">
+              {error()}
+            </span>
             <h1 class="text-xl font-bold leading-tight tracking-tight text-primary-900 md:text-2xl dark:text-white">
               Continue burning
             </h1>
-            <form action="#" class="space-y-4 md:space-y-6 pb-2">
+            <form onSubmit={login} class="space-y-4 md:space-y-6 pb-2">
               <div class="flex space-x-4 items-center">
                 <a
                   href="#"
@@ -102,6 +124,9 @@ const Login: Component = () => {
                   id="email"
                   class="bg-primary-50 border border-primary-300 text-primary-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-primary-700 dark:border-primary-600 dark:placeholder-primary-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   placeholder="Enter your email"
+                  value={email()}
+                  disabled={loading()}
+                  onChange={(e) => setEmail(e.currentTarget.value)}
                   required
                 />
               </div>
@@ -117,6 +142,9 @@ const Login: Component = () => {
                   type="password"
                   name="password"
                   id="password"
+                  value={password()}
+                  disabled={loading()}
+                  onChange={(e) => setPassword(e.currentTarget.value)}
                   placeholder="••••••••"
                   class="bg-primary-50 border border-primary-300 text-primary-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-primary-700 dark:border-primary-600 dark:placeholder-primary-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                   required
@@ -131,7 +159,6 @@ const Login: Component = () => {
                       aria-describedby="remember"
                       type="checkbox"
                       class="w-4 h-4 border border-primary-300 rounded bg-primary-50 focus:ring-3 focus:ring-primary-300 dark:bg-primary-700 dark:border-primary-600 dark:focus:ring-primary-600 dark:ring-offset-primary-800"
-                      required
                     />
                   </div>
                   <div class="text-sm ml-3">
@@ -150,9 +177,15 @@ const Login: Component = () => {
 
               <button
                 type="submit"
-                class="bg-primary-600 text-white font-medium text-sm text-center px-5 py-2.5 rounded-lg w-full hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300"
+                class="relative bg-primary-600 text-white font-medium text-sm text-center px-5 rounded-lg w-full hover:bg-primary-700 h-11 py-2.5 focus:ring-4 focus:outline-none focus:ring-primary-300"
+                style={loading() ? "background:rgb(51,65,85)" : ""}
               >
-                Sign in to your account
+                {loading() ? (
+                  <span class="absolute top-0 bottom-0 right-0 left-0 w-8 h-8 bg-transparent m-auto border-[3px] border-primary-100 rounded-[50%] border-t-primary-700 animate-spin">
+                  </span>
+                ) : (
+                  <span>Sign in to your account</span>
+                )}
               </button>
               <p class="text-primary-500 font-light text-sm ">
                 Don't have an account?{" "}
@@ -166,6 +199,4 @@ const Login: Component = () => {
       </div>
     </section>
   );
-};
-
-export default Login;
+}
