@@ -1,14 +1,15 @@
 {
   "include": [
-    "src"
+    "./src/"
   ],
   "compilerOptions": {
     "strict": true,
-    "target": "ES2021",
+    "target": "ESNext",
     "lib": [
-      "dom",
+      "DOM",
       "DOM.Iterable",
-      "ESNext"
+      "ES6",
+      "ESNext",
     ],
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,

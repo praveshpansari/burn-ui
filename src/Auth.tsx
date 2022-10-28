@@ -1,25 +1,53 @@
-// import { createContext, createSignal, useContext } from "solid-js";
-// import { createStore } from "solid-js/store";
-// import { me } from "./services/Auth.service";
-// const AuthContext = createContext();
+import { useNavigate, Outlet } from '@solidjs/router';
+import { createRoot, onMount, Show } from 'solid-js';
+import { createStore } from 'solid-js/store';
+import { me } from './services/auth.service';
 
-// const initialState = {
-//   isAuthenticated: false,
-//   token: null,
-//   currentUser: null,
-// };
+const initialState = {
+    isAuthenticated: false,
+    currentUser: null,
+};
 
-// export function AuthProvider(props: any) {
-//   const [store, setStore] = createStore(initialState);
-//   const loadUser=async () => {
-//     const user = await me()
-//   }
+const [store, setStore] = createStore(initialState);
 
-//   return (
-//     <AuthContext.Provider value={token}>{props.children}</AuthContext.Provider>
-//   );
-// }
+export const Auth = () => {
+    return (
+        <Show
+            when={!store.isAuthenticated}
+            fallback={() => {
+                useNavigate()('/');
+                return <div />;
+            }}
+        >
+            <Outlet />
+        </Show>
+    );
+};
 
-// export function useAuth() {
-//   return useContext(AuthContext);
-// }
+function createAuth() {
+    onMount(async () => {
+        if (localStorage.getItem('token')) {
+            setStore('isAuthenticated', true);
+            await loadCurrentUser();
+        }
+    });
+
+    const loadCurrentUser = async () => {
+        try {
+            const user = await me();
+            setStore('currentUser', user);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const setToken = async (token: string) => {
+        localStorage.setItem('token', token);
+        setStore('isAuthenticated', true);
+        await loadCurrentUser();
+    };
+
+    return { store, setToken };
+}
+
+export default createRoot(createAuth);
