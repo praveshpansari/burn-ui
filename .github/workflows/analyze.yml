@@ -1,6 +1,9 @@
 on:
   pull_request:
-    
+    branches:
+      - main
+  workflow_dispatch:
+
 jobs:
   analyze:
     name: Analyze
@@ -11,11 +14,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-    
+
       - name: Install dependencies
         run: npm install
-      
+
       - name: Analyze
         run: npm run analyze
-      
-    
+
+      - name: Build
+        run: npm run build

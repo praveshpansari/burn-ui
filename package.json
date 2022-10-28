@@ -6,7 +6,8 @@
     "start": "vite",
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "analyze": "npx prettier --config .prettierrc.json --check \"src/**/*.{tsx,css}\" && npx eslint . --ext .tsx"
   },
   "license": "MIT",
   "devDependencies": {
@@ -26,6 +27,7 @@
   "dependencies": {
     "@solidjs/router": "^0.5.0",
     "@urql/core": "^3.0.5",
+    "prettier": "2.7.1",
     "solid-js": "^1.5.1"
   }
 }
