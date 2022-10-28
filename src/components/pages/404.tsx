@@ -1,4 +1,4 @@
-import { Component } from "solid-js";
+import { Component } from 'solid-js';
 
 const _404: Component = () => {
   return (
@@ -12,8 +12,7 @@ const _404: Component = () => {
             Something's missing.
           </p>
           <p class="mb-4 text-lg font-light text-primary-500 dark:text-primary-400">
-            Sorry, we can't find that page. You'll find lots to explore on the
-            home page.{" "}
+            Sorry, we can't find that page. You'll find lots to explore on the home page.{' '}
           </p>
           <a
             href="/"

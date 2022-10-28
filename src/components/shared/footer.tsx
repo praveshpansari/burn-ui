@@ -1,14 +1,11 @@
-import { Component } from "solid-js";
-import flame from "../../assets/flame.png";
+import { Component } from 'solid-js';
+import flame from '../../assets/flame.png';
 
 const Footer: Component = () => {
   return (
     <footer class="p-4 bg-white md:p-8 lg:p-8 dark:bg-primary-800">
       <div class="mx-auto max-w-screen-xl text-center">
-        <a
-          href="#"
-          class="flex justify-center items-center text-lg font-semibold text-primary-900 dark:text-white"
-        >
+        <a href="#" class="flex justify-center items-center text-lg font-semibold text-primary-900 dark:text-white">
           <img src={flame} class="mr-3 h-4 sm:h-6" alt="Logo" />
           Cashburn
         </a>
@@ -53,7 +50,7 @@ const Footer: Component = () => {
           </li>
         </ul>
         <span class="text-sm text-primary-500 sm:text-center dark:text-primary-400">
-          © 2021-2022{" "}
+          © 2021-2022{' '}
           <a href="#" class="hover:underline">
             Cashburn™
           </a>
