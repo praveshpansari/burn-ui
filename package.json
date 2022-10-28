@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "serve": "vite preview",
-    "analyze": "npx prettier --config .prettierrc.json --check \"src/**/*.{ts,tsx,css}\" && npx eslint . --ext {.ts,.tsx}"
+    "analyze": "npx prettier --config .prettierrc.json --check \"src/**/*.{ts,tsx,css}\" && npx eslint src/ --ext .ts,.tsx"
   },
   "license": "MIT",
   "devDependencies": {
