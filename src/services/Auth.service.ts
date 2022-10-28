@@ -1,5 +1,5 @@
-import { createSignal } from "solid-js";
-import { client } from "../components/App";
+import { createSignal } from 'solid-js';
+import { client } from '../components/App';
 
 const [token, setToken] = createSignal(null);
 
@@ -7,10 +7,7 @@ export function getToken() {
   return token();
 }
 
-export async function handleLogin(credentials: {
-  email: string;
-  password: string;
-}) {
+export async function handleLogin(credentials: { email: string; password: string }) {
   await new Promise((r) => setTimeout(r, 5000));
   const response = await client
     .mutation(
